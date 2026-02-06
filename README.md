@@ -29,9 +29,8 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
 - **joblib** - Model serialization
 
 ## Project Structure
-
-- numerology-classifier-graphql/
- ├── backend/
+numerology-classifier-graphql/
+├── backend/
  │   └── NumerologyAPI/
  │       ├── Program.cs                 # Main entry point
  │       ├── appsettings.json          # Configuration
@@ -47,7 +46,7 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
  │       │       └── PredictionType.cs # GraphQL type
  │       └── Services/
  │           └── PredictionService.cs  # ML service
-- ├── frontend/
+├── frontend/
  │   ├── package.json                  # Dependencies
  │   ├── vite.config.js               # Vite config
  │   ├── svelte.config.js             # Svelte config
@@ -60,7 +59,7 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
  │       │   └── History.svelte       # History page
  │       └── lib/
  │           └── graphql.js           # GraphQL client
-- ├── ML/
+├── ML/
  │   ├── train_data.csv               # Training dataset (330 rows)
  │   ├── train_model.py               # Model training script
  │   ├── predict.py                   # Prediction script
@@ -77,15 +76,13 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
 
 ## Installation
 ### 1. Clone or Download the Project
-bash
-```
+```bash
 git clone <repository-url>
 cd numerology-classifier-graphql
 ```
 
 ### 2. Setup Python ML Environment
-bash
-```
+```bash
 cd ML
 pip install -r requirements.txt
 python3 train_model.py
@@ -100,16 +97,14 @@ python3 train_model.py
   - Model saved to .../numerology_model.pkl
 
 ### 3. Setup Backend (ASP.NET)
-bash
-```
+```bash
 cd ../backend
 dotnet new webapi -n NumerologyAPI
 cd NumerologyAPI
 ```
 
 - Install required NuGet packages:
-bash
-```
+```bash
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package HotChocolate.AspNetCore
@@ -117,23 +112,20 @@ dotnet add package HotChocolate.Data.EntityFramework
 ```
 
 - Copy all the C# files into their respective folders, then:
-bash
-```
+```bash
 dotnet restore
 dotnet build
 ```
 
 ### 4. Setup Frontend (Svelte)
-bash
-```
+```bash
 cd ../../frontend
 npm install
 ```
 
 ## Running the Application
 ### Start the Backend
-bash
-```
+```bash
 cd backend/NumerologyAPI
 dotnet run --urls "http://localhost:5000"
 ```
@@ -143,8 +135,7 @@ dotnet run --urls "http://localhost:5000"
 
 
 ### Start the Frontend (in a new terminal)
-bash
-```
+```bash
 cd frontend
 npm run dev
 ```
@@ -167,8 +158,7 @@ npm run dev
 
 ### Example Queries
 **Get all predictions:**
-graphql
-```
+```graphql
 query {
   predictions {
     id
@@ -180,8 +170,7 @@ query {
 ```
 
 **Create a new prediction:**
-graphql
-```
+```graphql
 mutation {
   addPrediction(inputText: "love harmony balance") {
     id
@@ -195,8 +184,7 @@ mutation {
 ## API Documentation
 ### GraphQL Schema
 #### Query Type
-graphql
-```
+```graphql
 type Query {
   predictions: [Prediction!]!
   prediction(id: Int!): Prediction
@@ -204,16 +192,14 @@ type Query {
 ```
 
 #### Mutation Type
-graphql
-```
+```graphql
 type Mutation {
   addPrediction(inputText: String!): Prediction!
 }
 ```
 
 #### Prediction Type
-graphql
-```
+```graphql
 type Prediction {
   id: Int!
   inputText: String!
@@ -240,8 +226,7 @@ type Prediction {
 
 ### Retraining the Model
 - If you modify `train_data.csv`:
-bash
-```
+```bash
 cd ML
 python3 train_model.py
 ```
@@ -251,8 +236,7 @@ python3 train_model.py
 ### Backend Port Configuration
 
 - Edit `backend/NumerologyAPI/appsettings.json`:
-json
-```
+```json
 {
   "Kestrel": {
     "Endpoints": {
@@ -266,8 +250,7 @@ json
 
 ### Frontend API URL
 - Edit `frontend/src/lib/graphql.js`:
-javascript
-```
+```javascript
 export const client = new Client({
   url: 'http://localhost:5000/graphql',
   // ...
@@ -276,8 +259,7 @@ export const client = new Client({
 
 ### CORS Configuration
 - Edit `backend/NumerologyAPI/Program.cs`:
-csharp
-```
+```csharp
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -293,8 +275,7 @@ builder.Services.AddCors(options =>
 ### Python Command Not Found
 - **Error:** `python: command not found`
 - **Solution:** Use `python3` instead. Update `PredictionService.cs`:
-csharp
-```
+```csharp
 FileName = "python3",  // Change from "python" to "python3"
 ```
 
@@ -302,8 +283,7 @@ FileName = "python3",  // Change from "python" to "python3"
 - **Error:** `Model not found. Please train the model first.`
 
 **Solution:**
-bash
-```
+```bash
 cd ML
 python3 train_model.py
 ```
@@ -333,8 +313,7 @@ dotnet run --urls "http://localhost:5000"
 ### Low Prediction Diversity
 - **Problem:** Model predicts mostly the same numbers
 - **Solution:** Add more varied training data to `train_data.csv` and retrain:
-bash
-```
+```bash
 cd ML
 python3 train_model.py
 ```
