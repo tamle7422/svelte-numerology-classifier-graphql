@@ -30,42 +30,42 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
 
 ## Project Structure
 numerology-classifier-graphql/
-|-- backend/
-|   `-- NumerologyAPI/
-|       |-- Program.cs                 # Main entry point
-|       |-- appsettings.json           # Configuration
-|       |-- NumerologyAPI.csproj       # Project file
-|       |-- Models/
-|       |   `-- Prediction.cs          # Data model
-|       |-- Data/
-|       |   `-- AppDbContext.cs        # Database context
-|       |-- GraphQL/
-|       |   |-- Query.cs               # GraphQL queries
-|       |   |-- Mutation.cs            # GraphQL mutations
-|       |   `-- Types/
-|       |       `-- PredictionType.cs  # GraphQL type
-|       `-- Services/
-|           `-- PredictionService.cs   # ML service
-|-- frontend/
-|   |-- package.json                   # Dependencies
-|   |-- vite.config.js                 # Vite config
-|   |-- svelte.config.js               # Svelte config
-|   `-- src/
-|       |-- main.js                    # Entry point
-|       |-- app.css                    # Global styles
-|       |-- App.svelte                 # Root component
-|       |-- routes/
-|       |   |-- Predict.svelte         # Prediction page
-|       |   `-- History.svelte         # History page
-|       `-- lib/
-|           `-- graphql.js             # GraphQL client
-|-- ML/
-|   |-- train_data.csv                 # Training dataset (330 rows)
-|   |-- train_model.py                 # Model training script
-|   |-- predict.py                     # Prediction script
-|   |-- requirements.txt               # Python dependencies
-|   `-- numerology_model.pkl           # Trained model (generated)
-`-- README.md                          # This file
+├── backend/
+│   └── NumerologyAPI/
+│       ├── Program.cs                 # Main entry point
+│       ├── appsettings.json           # Configuration
+│       ├── NumerologyAPI.csproj       # Project file
+│       ├── Models/
+│       │   └── Prediction.cs          # Data model
+│       ├── Data/
+│       │   └── AppDbContext.cs        # Database context
+│       ├── GraphQL/
+│       │   ├── Query.cs               # GraphQL queries
+│       │   ├── Mutation.cs            # GraphQL mutations
+│       │   └── Types/
+│       │       └── PredictionType.cs  # GraphQL type
+│       └── Services/
+│           └── PredictionService.cs   # ML service
+├── frontend/
+│   ├── package.json                   # Dependencies
+│   ├── vite.config.js                 # Vite config
+│   ├── svelte.config.js               # Svelte config
+│   └── src/
+│       ├── main.js                    # Entry point
+│       ├── app.css                    # Global styles
+│       ├── App.svelte                 # Root component
+│       ├── routes/
+│       │   ├── Predict.svelte         # Prediction page
+│       │   └── History.svelte         # History page
+│       └── lib/
+│           └── graphql.js             # GraphQL client
+├── ML/
+│   ├── train_data.csv                 # Training dataset (330 rows)
+│   ├── train_model.py                 # Model training script
+│   ├── predict.py                     # Prediction script
+│   ├── requirements.txt               # Python dependencies
+│   └── numerology_model.pkl           # Trained model (generated)
+└── README.md                          # This file
 
 ## Prerequisites
 - **.NET 8.0 SDK** - [Download](https://dotnet.microsoft.com/download)
