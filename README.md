@@ -29,6 +29,7 @@ A full-stack web application that predicts numerology numbers (1-33) based on ke
 - **joblib** - Model serialization
 
 ## Project Structure
+```text
 numerology-classifier-graphql/
 ├── backend/
 │   └── NumerologyAPI/
@@ -66,6 +67,7 @@ numerology-classifier-graphql/
 │   ├── requirements.txt               # Python dependencies
 │   └── numerology_model.pkl           # Trained model (generated)
 └── README.md                          # This file
+```
 
 ## Prerequisites
 - **.NET 8.0 SDK** - [Download](https://dotnet.microsoft.com/download)
